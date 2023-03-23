@@ -8,6 +8,7 @@ const path = require('node:path')
 const { Player } = require('discord-player')
 const { Client, GatewayIntentBits, ActivityType, Collection, Partials } = require('discord.js')
 const cmds = require('./msgCommands')
+const { isValidUrl } = require('./utils')
 
 // Create a new client instance
 const client = new Client({
@@ -85,7 +86,11 @@ for (const file of eventFiles) {
 
 client.on('messageCreate', (message) => {
   if (message.content.startsWith(client.prefix)) {
-    const [cmd, song] = message.content.slice(3).replace('\n', ' ').split(' ')
+    let [cmd, song, ...rest] = message.content.slice(3).replace('\n', ' ').split(' ')
+    if (!isValidUrl(song)) {
+      song = `${song} ${rest.join(' ')}`
+    }
+
     if (cmds[cmd]) {
       const info = {
         song,

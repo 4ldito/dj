@@ -1,20 +1,20 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder } = require('discord.js')
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("resume")
-        .setDescription("resume"),
-    async execute(interaction) {
-        try{
-        const queue = interaction.client.player.nodes.get(interaction.guild)
+  data: new SlashCommandBuilder()
+    .setName('resume')
+    .setDescription('resume'),
+  async execute (interaction) {
+    try {
+      const queue = interaction.client.player.nodes.get(interaction.guild)
 
-        if (!queue || !queue.isPlaying()) {
-            return interaction.reply("There is nothing playing")
-        }
+      if (!queue || !queue.isPlaying()) {
+        return interaction.reply('Nada se está reproduciendo.')
+      }
 
-        const paused = queue.node.setPaused(false)
-        return interaction.reply("resumed successfully")
-    }catch (error) {
-        console.log(error)
+      await queue.node.setPaused(false)
+      return interaction.reply('Volviendo a lo mio 😎️🥵️🥵️')
+    } catch (error) {
+      console.log(error)
     }
-}
+  }
 }
