@@ -22,6 +22,7 @@ const lyrics = async ({ client, channel, guild }) => {
     }
   } catch (error) {
     console.log(error)
+    if (error.message.includes('Could not parse lyrics')) return channel.send('No pude encontrar la letra.')
   }
 }
 
