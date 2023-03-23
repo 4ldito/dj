@@ -21,11 +21,12 @@ const play = async ({ song, channel, voiceChannel, client, member, guild }) => {
         volume: 100,
         bufferingTimeout: 5000,
         leaveOnEnd: true,
-        leaveOnEndCooldown: 300000
+        leaveOnEndCooldown: 30000
       }
     })
   } catch (error) {
     console.log(error)
+    if (error.message.includes('Could not extract stream for this track')) return channel.send('No puedo reproducir esa canción o me pegan.')
   }
 }
 
