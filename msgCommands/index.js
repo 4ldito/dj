@@ -5,9 +5,12 @@ const { resume } = require('./resume')
 
 const cmds = {
   play,
+  p: play,
   skip,
+  s: skip,
   pause,
-  resume
+  resume,
+  r: resume
 }
 
 module.exports = cmds
