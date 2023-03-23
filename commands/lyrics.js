@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
 const { lyricsExtractor } = require('@discord-player/extractor')
 const search = lyricsExtractor()
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('lyrics')
@@ -15,9 +16,7 @@ module.exports = {
 
       const queue = interaction.client.player.nodes.get(interaction.guild)
       const music = interaction.options.getString('name')
-      if (!queue && !music) {
-        return interaction.editReply({ content: "There is no queue and you didn't mention any song name!" })
-      }
+      if (!queue && !music) return interaction.editReply({ content: "There is no queue and you didn't mention any song name!" })
 
       if (queue || music) {
         const result = await search.search(music ?? queue.currentTrack.title)
