@@ -19,8 +19,7 @@ module.exports = {
             .setTitle("Now playing")
             .setDescription(`[${queue.currentTrack.title}](${queue.currentTrack.url})`)
             .setThumbnail(`${queue.currentTrack.thumbnail}`)
-            .addFields(
-                { name: '\200', value: progress.replace(/ 0:00/g, 'LIVE') }
+            .addFields( { name: '\200', value: progress.replace(/ 0:00/g, 'LIVE') }
             )
 
         await interaction.reply({ embeds: [embed] })
