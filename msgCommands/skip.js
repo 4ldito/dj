@@ -5,7 +5,7 @@ const skip = async ({ client, guild, channel }) => {
     if (!queue || !queue.isPlaying()) return
 
     await queue.node.skip()
-    return channel.send(`Skipped ${queue.currentTrack}`)
+    return channel.send(`Skipeando **${queue.currentTrack}** prometo la próxima vez elegir mejor :(`)
   } catch (error) {
     console.log(error)
   }
