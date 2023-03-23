@@ -17,7 +17,6 @@ module.exports = {
 
       const songName = interaction.options.getString('song')
 
-      console.log(interaction.user)
       const result = await interaction.client.player.search(songName, {
         requestedBy: interaction.user,
         searchEngine: QueryType.AUTO
