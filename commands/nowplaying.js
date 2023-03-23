@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('np')
@@ -7,19 +8,17 @@ module.exports = {
     try {
       const queue = interaction.client.player.nodes.get(interaction.guild)
 
-      if (!queue || !queue.isPlaying()) {
-        return interaction.reply({ content: 'There is not playing anything', ephemeral: true })
-      }
+      if (!queue || !queue.isPlaying()) return interaction.reply({ content: 'Yo no estoy escuchando nada, esquizofrenico', ephemeral: true })
 
       const progress = queue.node.createProgressBar()
-      //   const ts = queue.node.getTimestamp()
 
       const embed = new EmbedBuilder()
-        .setTitle('Now playing')
+        .setTitle('Estás escuchando:')
         .setDescription(`[${queue.currentTrack.title}](${queue.currentTrack.url})`)
         .setThumbnail(`${queue.currentTrack.thumbnail}`)
-        .addFields({ name: '200', value: progress.replace(/ 0:00/g, 'LIVE') }
-        )
+        .addFields({ name: 'Requested by', value: `${queue.currentTrack.requestedBy.username}` })
+        .addFields({ name: 'Visitas o.o', value: `${queue.currentTrack.views}` })
+        .addFields({ name: 'Duración', value: progress })
 
       await interaction.reply({ embeds: [embed] })
     } catch (error) {
