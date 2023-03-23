@@ -21,7 +21,7 @@ const search = async ({ client, guild, channel, voiceChannel, song, member }) =>
     text = text.substring(0, 1997)
 
     const embed = new EmbedBuilder()
-      .setTitle(`${song}:`)
+      .setTitle(`Resultados para: **${song}**`)
       .setDescription(text.length === 1997 ? `${text}...` : text)
     channel.send({ embeds: [embed] })
 
