@@ -90,7 +90,6 @@ client.on('messageCreate', (message) => {
     if (!isValidUrl(song)) {
       song = `${song} ${rest.join(' ')}`
     }
-
     if (cmds[cmd]) {
       const info = {
         song,

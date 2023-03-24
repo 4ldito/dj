@@ -5,6 +5,7 @@ const { resume } = require('./resume')
 const { currentSong } = require('./currentSong')
 const { lyrics } = require('./lyrics')
 const { search } = require('./search')
+const { future } = require('./future')
 
 const cmds = {
   play,
@@ -18,7 +19,8 @@ const cmds = {
   c: currentSong,
   song: currentSong,
   lyrics,
-  search
+  search,
+  future
 }
 
 module.exports = cmds
